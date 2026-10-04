@@ -1,4 +1,5 @@
 import {requireLocalModels} from '../hosting.js';
+import {validModelResponse} from './validate-response.js';
 const CACHE='safar-model-v1';
 const files=['/models/all-MiniLM-L6-v2/config.json','/models/all-MiniLM-L6-v2/tokenizer.json','/models/all-MiniLM-L6-v2/tokenizer_config.json','/models/all-MiniLM-L6-v2/special_tokens_map.json','/models/all-MiniLM-L6-v2/onnx/model_quantized.onnx','/wasm/ort-wasm-simd-threaded.jsep.wasm','/wasm/ort-wasm-simd-threaded.jsep.mjs'];
 let worker,ready=false,pending=new Map(),sequence=0,loading;
@@ -10,7 +11,7 @@ function request(action,text){
   }
   return new Promise((resolve,reject)=>{const id=++sequence;const timer=setTimeout(()=>{pending.delete(id);reject(new Error('Model took too long. Try again or use the local fallback.'))},120000);pending.set(id,{resolve,reject,timer});worker.postMessage({id,action,text})})
 }
-export async function hasCachedModel(){if(!('caches' in window))return false;const cache=await caches.open(CACHE);return (await Promise.all(files.map(f=>cache.match(f,{ignoreVary:true})))).every(Boolean)}
+export async function hasCachedModel(){if(!('caches' in window))return false;const cache=await caches.open(CACHE);return (await Promise.all(files.map(async f=>validModelResponse(await cache.match(f,{ignoreVary:true}),f)))).every(Boolean)}
 export async function loadSemanticModel(progress=()=>{}){
  requireLocalModels();
   if(ready)return true;if(loading)return loading;
@@ -18,7 +19,13 @@ export async function loadSemanticModel(progress=()=>{}){
     const cache=await caches.open(CACHE);
     for(let i=0;i<files.length;i++){
       progress(`Preparing file ${i+1} of ${files.length}…`);
-      if(!await cache.match(files[i],{ignoreVary:true})){const response=await fetch(files[i]);if(!response.ok)throw new Error('Model files are not available. Reconnect to the local app and try again.');await cache.put(files[i],response)}
+      const file=files[i];
+      if(!await validModelResponse(await cache.match(file,{ignoreVary:true}),file)){
+        await cache.delete(file,{ignoreVary:true});
+        const response=await fetch(file,{cache:'reload'});
+        if(!await validModelResponse(response,file))throw new Error(`Intent model file is missing or invalid: ${file}. Run the full local app with its model files installed, then prepare the classifier again.`);
+        await cache.put(file,response);
+      }
     }
     progress('Starting the model on this device…');await request('load');ready=true;progress('Ready on this device');return true;
   })().catch(e=>{loading=null;throw e});return loading;
