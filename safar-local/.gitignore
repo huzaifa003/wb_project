@@ -1,0 +1,27 @@
+node_modules/
+dist/
+.sites-runtime/
+*.tar.gz
+test-results/
+
+.translation-tools/
+
+dist-hosted/
+public-demo/
+
+# Downloaded AI weights and inference runtimes (keep local)
+public/models/
+public/wasm/
+*.onnx
+*.onnx_data
+*.onnx.data
+*.safetensors
+*.gguf
+*.ggml
+*.pt
+*.pth
+*.tflite
+pytorch_model*.bin
+params_shard_*.bin
+__pycache__/
+*.py[cod]

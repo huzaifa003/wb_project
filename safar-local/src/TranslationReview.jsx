@@ -1,0 +1,7 @@
+import React,{useState,useId} from 'react';
+export default function TranslationReview({message,onSave}){
+ const id=useId(),[open,setOpen]=useState(false),[text,setText]=useState(''),[checked,setChecked]=useState(false);
+ if(!onSave)return message.translation_review?<p className="review-caption">Meaning checked with the speaker · saved locally.</p>:null;
+ if(!open)return <button className="back-link translation-review-button" disabled={message.translation_status==='pending'} onClick={()=>{setText(message.translated_text||'');setChecked(false);setOpen(true)}}>{message.translation_review?'Edit reviewed translation':'Review or correct translation'}</button>;
+ return <div className="translation-review"><label htmlFor={id}>Words checked with the speaker</label><textarea id={id} rows={3} maxLength={2000} lang={message.visitor_language==='en'?'ur':'en'} dir={message.visitor_language==='en'?'rtl':'ltr'} value={text} onChange={e=>setText(e.target.value)}/><label className="review-check"><input type="checkbox" checked={checked} onChange={e=>setChecked(e.target.checked)}/> I checked this meaning with the speaker.</label><p>The original message and earlier draft stay in this record. This does not train the model.</p><div className="translation-controls"><button className="secondary-button" disabled={!checked||!text.trim()} onClick={()=>{onSave(message.id,text,checked);setOpen(false)}}>Save reviewed wording</button><button className="back-link" onClick={()=>setOpen(false)}>Cancel review</button></div></div>;
+}

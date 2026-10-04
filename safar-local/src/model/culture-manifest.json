@@ -1,0 +1,121 @@
+{
+  "lite": {
+    "name": "SmolLM2-135M-Instruct",
+    "repo": "HuggingFaceTB/SmolLM2-135M-Instruct",
+    "revision": "12fd25f77366fa6b3b4b768ec3050bf629380bac",
+    "license": "Apache-2.0",
+    "files": [
+      {
+        "url": "/models/SmolLM2-135M-Instruct/config.json",
+        "bytes": 861
+      },
+      {
+        "url": "/models/SmolLM2-135M-Instruct/generation_config.json",
+        "bytes": 132
+      },
+      {
+        "url": "/models/SmolLM2-135M-Instruct/tokenizer.json",
+        "bytes": 2104556
+      },
+      {
+        "url": "/models/SmolLM2-135M-Instruct/tokenizer_config.json",
+        "bytes": 3764
+      },
+      {
+        "url": "/models/SmolLM2-135M-Instruct/special_tokens_map.json",
+        "bytes": 655
+      },
+      {
+        "url": "/models/SmolLM2-135M-Instruct/onnx/model_q4.onnx",
+        "bytes": 182068553
+      }
+    ],
+    "bytes": 184178521
+  },
+  "text": {
+    "name": "Qwen2.5-0.5B-Instruct",
+    "repo": "onnx-community/Qwen2.5-0.5B-Instruct",
+    "revision": "cc5cc01a65cc3ff17bdb73a7de33d879f62599b0",
+    "license": "Apache-2.0",
+    "files": [
+      {
+        "url": "/models/Qwen2.5-0.5B-Instruct/config.json",
+        "bytes": 678
+      },
+      {
+        "url": "/models/Qwen2.5-0.5B-Instruct/generation_config.json",
+        "bytes": 242
+      },
+      {
+        "url": "/models/Qwen2.5-0.5B-Instruct/tokenizer.json",
+        "bytes": 7031673
+      },
+      {
+        "url": "/models/Qwen2.5-0.5B-Instruct/tokenizer_config.json",
+        "bytes": 7306
+      },
+      {
+        "url": "/models/Qwen2.5-0.5B-Instruct/special_tokens_map.json",
+        "bytes": 613
+      },
+      {
+        "url": "/models/Qwen2.5-0.5B-Instruct/onnx/model_q4.onnx",
+        "bytes": 786156820
+      }
+    ],
+    "bytes": 793197332
+  },
+  "vision": {
+    "name": "SmolVLM-256M-Instruct",
+    "repo": "HuggingFaceTB/SmolVLM-256M-Instruct",
+    "revision": "7e3e67edbbed1bf9888184d9df282b700a323964",
+    "license": "Apache-2.0",
+    "files": [
+      {
+        "url": "/models/SmolVLM-256M-Instruct/config.json",
+        "bytes": 7353
+      },
+      {
+        "url": "/models/SmolVLM-256M-Instruct/generation_config.json",
+        "bytes": 136
+      },
+      {
+        "url": "/models/SmolVLM-256M-Instruct/tokenizer.json",
+        "bytes": 3548256
+      },
+      {
+        "url": "/models/SmolVLM-256M-Instruct/tokenizer_config.json",
+        "bytes": 28249
+      },
+      {
+        "url": "/models/SmolVLM-256M-Instruct/special_tokens_map.json",
+        "bytes": 1069
+      },
+      {
+        "url": "/models/SmolVLM-256M-Instruct/preprocessor_config.json",
+        "bytes": 486
+      },
+      {
+        "url": "/models/SmolVLM-256M-Instruct/processor_config.json",
+        "bytes": 68
+      },
+      {
+        "url": "/models/SmolVLM-256M-Instruct/chat_template.json",
+        "bytes": 429
+      },
+      {
+        "url": "/models/SmolVLM-256M-Instruct/onnx/decoder_model_merged_q4.onnx",
+        "bytes": 86562901
+      },
+      {
+        "url": "/models/SmolVLM-256M-Instruct/onnx/embed_tokens_q4.onnx",
+        "bytes": 113541438
+      },
+      {
+        "url": "/models/SmolVLM-256M-Instruct/onnx/vision_encoder_q4.onnx",
+        "bytes": 63784987
+      }
+    ],
+    "bytes": 267475372
+  }
+}

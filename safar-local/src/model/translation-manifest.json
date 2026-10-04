@@ -1,0 +1,96 @@
+{
+  "en": {
+    "name": "opus-mt-en-ur",
+    "sourceLanguage": "en",
+    "targetLanguage": "ur",
+    "repo": "R4kSo1997/opus-mt-en-ur-onnx-int8",
+    "revision": "ac7b3450b2f927db9f60597a0fbc9bed337d63cb",
+    "upstream": "Helsinki-NLP/opus-mt-en-ur",
+    "license": "Apache-2.0 (upstream model card)",
+    "files": [
+      {
+        "url": "/models/opus-mt-en-ur/config.json",
+        "bytes": 1366,
+        "sha256": "67407669417e250fb106aee0ba943f7ddaac77af0c9e3203c898ce26e3934c28"
+      },
+      {
+        "url": "/models/opus-mt-en-ur/generation_config.json",
+        "bytes": 304,
+        "sha256": "0316ddffa1ca4ac49585e9f8ab3ee92e7822bed5bce436e6d06e95f4cc0e4dfd"
+      },
+      {
+        "url": "/models/opus-mt-en-ur/tokenizer.json",
+        "bytes": 1819072,
+        "sha256": "b7adba3f68531f486a188f17c6dfba6d152ce59d04fae5fd932f8cfc9683835e"
+      },
+      {
+        "url": "/models/opus-mt-en-ur/tokenizer_config.json",
+        "bytes": 888,
+        "sha256": "a2cdadb3d6f3c7b5ec602428437bfbf61968daaf8cd7d5ade6cf58f5f80c3cea"
+      },
+      {
+        "url": "/models/opus-mt-en-ur/special_tokens_map.json",
+        "bytes": 79,
+        "sha256": "2783f25e6fa0bd93f6e621623b33f32d5ab978715fb8c9f2584252b03837a323"
+      },
+      {
+        "url": "/models/opus-mt-en-ur/onnx/encoder_model_quantized.onnx",
+        "bytes": 51351251,
+        "sha256": "cf41d5502e2910c83bc06dcff61077db315c4558f98041ee9ddab1ffd50e929a"
+      },
+      {
+        "url": "/models/opus-mt-en-ur/onnx/decoder_model_merged_quantized.onnx",
+        "bytes": 90487843,
+        "sha256": "d0bcc3f2688c45d1984c2d527a1e415b5a6b1453daa3c798c0a92e31cd5b1c7e"
+      }
+    ],
+    "bytes": 143660803
+  },
+  "ur": {
+    "name": "opus-mt-ur-en",
+    "sourceLanguage": "ur",
+    "targetLanguage": "en",
+    "repo": "R4kSo1997/opus-mt-ur-en-onnx-int8",
+    "revision": "efa493ac1a42b5d9a504590600a714f7e9b1bc00",
+    "upstream": "Helsinki-NLP/opus-mt-ur-en",
+    "license": "Apache-2.0 (upstream model card)",
+    "files": [
+      {
+        "url": "/models/opus-mt-ur-en/config.json",
+        "bytes": 1366,
+        "sha256": "67407669417e250fb106aee0ba943f7ddaac77af0c9e3203c898ce26e3934c28"
+      },
+      {
+        "url": "/models/opus-mt-ur-en/generation_config.json",
+        "bytes": 304,
+        "sha256": "10258093428a0a64fa036d8c29b40262e4757ab18e2502a03ad9b28f7de3203c"
+      },
+      {
+        "url": "/models/opus-mt-ur-en/tokenizer.json",
+        "bytes": 1812592,
+        "sha256": "5b46f7f6a84a2d0df7ce5bcf7f8f8625bb21e07631e4831432ef46ee8f980271"
+      },
+      {
+        "url": "/models/opus-mt-ur-en/tokenizer_config.json",
+        "bytes": 888,
+        "sha256": "db7c1e7dffab7ecfe91dab8b575f8cda2518f5e7c66084d6c869312ed3120d64"
+      },
+      {
+        "url": "/models/opus-mt-ur-en/special_tokens_map.json",
+        "bytes": 79,
+        "sha256": "2783f25e6fa0bd93f6e621623b33f32d5ab978715fb8c9f2584252b03837a323"
+      },
+      {
+        "url": "/models/opus-mt-ur-en/onnx/encoder_model_quantized.onnx",
+        "bytes": 51351252,
+        "sha256": "c4870043e4ea189232d783355e608b856158ed9be0e3143af2f4ba64755a69ee"
+      },
+      {
+        "url": "/models/opus-mt-ur-en/onnx/decoder_model_merged_quantized.onnx",
+        "bytes": 90487845,
+        "sha256": "19f0a277fe216a2144ef00c896f7a73fe51de64dfc528d183c941f646fbf2211"
+      }
+    ],
+    "bytes": 143654326
+  }
+}
