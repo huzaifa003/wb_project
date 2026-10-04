@@ -11,6 +11,12 @@ export default defineConfig({
   plugins: [{name:'local-model-assets',configureServer(server){
     server.middlewares.use(async(req,res,next)=>{
       const pathname=new URL(req.url,'http://localhost').pathname;
+      // Retire a production worker when this origin switches back to development.
+      // Preserve model caches and local conversation storage.
+      if(pathname==='/sw.js'){
+        res.setHeader('Content-Type','text/javascript');res.setHeader('Cache-Control','no-store');
+        return res.end("self.addEventListener('install',()=>self.skipWaiting());self.addEventListener('activate',event=>event.waitUntil((async()=>{await self.registration.unregister();for(const client of await self.clients.matchAll({type:'window'})){await client.navigate(client.url)}})()));");
+      }
       if(!pathname.startsWith('/models/')&&!pathname.startsWith('/wasm/'))return next();
       const root=path.resolve(server.config.publicDir);
       const file=path.resolve(root,'.'+decodeURIComponent(pathname));

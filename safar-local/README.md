@@ -69,3 +69,11 @@ Noor is a fictional challenge persona. Six parties, costs and outcomes are autho
 ## Hosted demonstration without downloadable models
 
 Run `pnpm build:hosted` and deploy **dist-hosted**, not the full local `dist`. This separate build excludes public model packs and the public WASM folder, displays an app-wide hosting-limit notice, and disables model preparation. Everyday Culture, authored translation phrases, local records, the trial and opt-in Maps remain available. The notice includes localhost instructions. Normal `pnpm build` retains the full local AI version. Hosting does not transfer existing localhost records or model caches. This command only prepares files; it does not publish them.
+
+### Restore intent AI after cloning
+
+Model downloads and browser runtime files are excluded from Git. Run `pnpm install`, then `pnpm setup:intent` in the app folder (internet required for missing model files). This restores the pinned MiniLM encoder and copies the installed ONNX browser runtime into `public/wasm`. Start `pnpm dev`, open its printed URL, and prepare the classifier in Talk. The other optional AI packs have separate setup scripts above.
+
+### Automatic local AI setup
+
+`pnpm dev` now checks and prepares every active AI pack before starting Vite: intent, CPU Culture, vision, shared WebGPU LLM, both translation directions and the browser runtime. First setup needs internet and several GB of disk space; later runs reuse valid files. Downloads use pinned revisions, temporary files and retries. Translation preparation on a fresh clone requires Python 3.10+; dependencies are installed into an isolated `.translation-tools/venv`. Set `SAFAR_PYTHON` if Python is not on PATH. Run `pnpm setup:ai` to prepare without starting the app. Use `pnpm dev:light` to start immediately without downloading models. Hosted builds do not run setup or include weights. Phone RAM/WebGPU eligibility rules are unchanged.

@@ -4,11 +4,14 @@
   "version": "1.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite --host 127.0.0.1",
+    "dev": "node scripts/dev.mjs",
     "build": "vite build",
     "preview": "vite preview --host 127.0.0.1",
     "test": "node --test tests/*.test.js",
-    "build:hosted": "node scripts/build-hosted.mjs"
+    "build:hosted": "node scripts/build-hosted.mjs",
+    "setup:intent": "node scripts/setup-intent.mjs",
+    "setup:ai": "node scripts/setup-ai.mjs",
+    "dev:light": "vite --host 127.0.0.1"
   },
   "dependencies": {
     "@huggingface/transformers": "3.8.1",
