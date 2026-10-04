@@ -2,26 +2,27 @@ import {HOSTED_DEMO} from './hosting.js';
 import HostedNotice from './HostedNotice.jsx';
 import TranslationReview from './TranslationReview.jsx';
 import {reviewTranslation} from './translation-review.js';
-const Pilot=lazy(()=>import('./Pilot.jsx'));
 import {downloadRecords} from './export-records.js';
 import RecordUse from './RecordUse.jsx';
 
 import React,{useEffect,useMemo,useRef,useState,useId,lazy,Suspense} from 'react';
 import {Home as HomeIcon,MessageCircle,ChartNoAxesCombined,Users,Compass,ArrowUpRight,WifiOff,ShieldCheck,Sprout,Mic,Coffee,Leaf,Check,Sparkles,ArrowLeft,Plus,Send,Volume2,Trash2,X,Globe,Download,Info,Utensils,Search,Settings,ChevronRight,Keyboard,RefreshCw,Cpu,MapPin} from 'lucide-react';
-const ModelLab=lazy(()=>import('./ModelLab.jsx'));
 import TalkModelControl from './TalkModelControl.jsx';
 import IntentResult from './IntentResult.jsx';
 import TranslationControl from './TranslationControl.jsx';
 import {translationWarnings} from './model/translation-policy.js';
 import {translateLocalText,stopTranslation,clearTranslationMemory} from './model/translation-service.js';
-const CultureAssistant=lazy(()=>import('./CultureAssistant.jsx'));
-const LocalMap=lazy(()=>import('./LocalMap.jsx'));
-const TrialJourney=lazy(()=>import('./TrialJourney.jsx'));
 import {TRIAL_KEY} from './trial.js';
 import {isModelReady,predictSemantic} from './model/service.js';
 import {BUSINESS_KEY} from './business.js';
 import {registerSW} from 'virtual:pwa-register';
 import {normalize,aggregate,opportunities,evidence,makeMessage,seedConversations,loadConversations,STORAGE_KEY,CULTURES,culturalGuidance,PACK} from './engine.js';
+
+const Pilot=lazy(()=>import('./Pilot.jsx'));
+const ModelLab=lazy(()=>import('./ModelLab.jsx'));
+const CultureAssistant=lazy(()=>import('./CultureAssistant.jsx'));
+const LocalMap=lazy(()=>import('./LocalMap.jsx'));
+const TrialJourney=lazy(()=>import('./TrialJourney.jsx'));
 
 const names={home:'Home',talk:'Talk',learn:'Learn',visitors:'Visitors',culture:'Culture',model:'On-device AI',map:'Maps',trial:'Experience trial',pilot:'About the pilot'};
 const label=s=>s.toLowerCase().replaceAll('_',' ');

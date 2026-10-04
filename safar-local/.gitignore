@@ -25,3 +25,4 @@ pytorch_model*.bin
 params_shard_*.bin
 __pycache__/
 *.py[cod]
+node_modules.broken-backup/
