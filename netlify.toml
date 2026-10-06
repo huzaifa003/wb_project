@@ -1,0 +1,8 @@
+[build]
+  base = "safar-local"
+  command = "pnpm run build:hosted"
+  publish = "dist-hosted"
+
+[build.environment]
+  NODE_VERSION = "22"
+
