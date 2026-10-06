@@ -4,10 +4,22 @@ import path from 'node:path';
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 import { VitePWA } from 'vite-plugin-pwa';
+const hosted = process.env.VITE_HOSTED_DEMO === 'true';
+// Hosted mode cannot start models, so omit their large inference libraries too.
+function hostedModelWorker() {
+  return {
+    name: 'hosted-model-worker',
+    transform(source, id) {
+      if (!/\/src\/model\/(?:model|translation|culture|shared-llm)\.worker\.js$/.test(id.replaceAll('\\', '/'))) return;
+      return {code: "self.onmessage = ({data}) => self.postMessage({id: data.id, error: 'AI models are unavailable in this hosted demo.'});", map: null};
+    }
+  };
+}
 export default defineConfig({
+  base: '/',
   publicDir: process.env.VITE_HOSTED_DEMO==='true'?'public-demo':'public',
   build: {outDir:process.env.VITE_HOSTED_DEMO==='true'?'dist-hosted':'dist'},
-  worker: { format: 'es' },
+  worker: { format: 'es', plugins: () => hosted ? [hostedModelWorker()] : [] },
   plugins: [{name:'local-model-assets',configureServer(server){
     server.middlewares.use(async(req,res,next)=>{
       const pathname=new URL(req.url,'http://localhost').pathname;
